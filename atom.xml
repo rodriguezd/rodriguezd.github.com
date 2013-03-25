@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[David's Blog]]></title>
+  <title><![CDATA[What did I get myself into???]]></title>
   <link href="http://rodriguezd.github.com/atom.xml" rel="self"/>
   <link href="http://rodriguezd.github.com/"/>
-  <updated>2013-03-10T22:21:05-04:00</updated>
+  <updated>2013-03-24T21:54:00-04:00</updated>
   <id>http://rodriguezd.github.com/</id>
   <author>
     <name><![CDATA[David Rodriguez]]></name>
@@ -12,5 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[So where do I begin?]]></title>
+    <link href="http://rodriguezd.github.com/blog/2013/03/21/so-where-do-i-begin/"/>
+    <updated>2013-03-21T21:03:00-04:00</updated>
+    <id>http://rodriguezd.github.com/blog/2013/03/21/so-where-do-i-begin</id>
+    <content type="html"><![CDATA[<h3><em>A long time ago, in a galaxy far, far, away &#8230;</em></h3>
+
+<p>I&#8217;ve been meaning to start blogging for quite some time. But like most who do, I just hadn&#8217;t gotten around to it. My time has come.</p>
+
+<p>What you&#8217;re reading now was not my first draft of this post. In what I can only describe as an episode of irrational post writing exuberance, I began writing a rambling post that began with my childhood career preferences. It went downhill from there. Luckily for me and every reader of my blog, my wonderful and beautiful girlfriend (a.k.a my fiance) knocked some blogging sense into me. (She&#8217;s a budding food blogger herself. <a href="http://foodentity.wordpress.com">Check hers out</a>.)</p>
+
+<p>So let&#8217;s just say that about a year ago I started down a path to change my career from a high school math teacher to a full stack web developer. Being a teacher is not a lifetime occupation for me, it&#8217;s not where I&#8217;m meant to be. It had it&#8217;s moments, there are many things I did that I am very proud of, and in one very significant and wonderful way it lead to very big change in my life for the better. I have no regrets but it&#8217;s time to move on.</p>
+
+<p>I have an engineering degree, I used to work for Fortune 100 companies on technology projects, and I have always been the techie, tinkering type. How I wound up teaching is not important. What is important is that I have decided to go back to where I belong. Back to the world of technology, engineering, and problem solving with creative solutions. (In other words, working on really cool stuff, using really cool technologies, with really cool people, and making magic happen.)</p>
+
+<p>So in posts to follow I hope to chronicle my experiences on this &#8220;little&#8221; endeavor I have embarked on. I am also quite sure there will be a decent peppering of tangential and completely random posts on events, people, and thoughts the universe throws my way. I can&#8217;t tell you what to expect should you choose to return and read my future posts because frankly I have no idea what to expect myself. We can find out together. Stay tuned.</p>
+
+<p>It&#8217;s gonna be interesting.</p>
+
+<p>&#8220;<em>And, when you want something, all the universe conspires in helping you to achieve it.</em>&#8221; - Paulo Coelho, <em>The Alchemist</em></p>
+]]></content>
+  </entry>
   
 </feed>
