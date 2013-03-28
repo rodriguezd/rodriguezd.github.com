@@ -4,7 +4,7 @@
   <title><![CDATA[What did I get myself into???]]></title>
   <link href="http://rodriguezd.github.com/atom.xml" rel="self"/>
   <link href="http://rodriguezd.github.com/"/>
-  <updated>2013-03-25T17:32:53-04:00</updated>
+  <updated>2013-03-28T09:39:10-04:00</updated>
   <id>http://rodriguezd.github.com/</id>
   <author>
     <name><![CDATA[David Rodriguez]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Spring Break => Code, Code, Read, Code]]></title>
+    <link href="http://rodriguezd.github.com/blog/2013/03/28/spring-break-equals-%3E-code/"/>
+    <updated>2013-03-28T09:04:00-04:00</updated>
+    <id>http://rodriguezd.github.com/blog/2013/03/28/spring-break-equals->-code</id>
+    <content type="html"><![CDATA[<p>Today is the first day of my school&#8217;s Spring break. I&#8217;m off until April 7th. Now is when I have to stop thinking and talking about all the great stuff I&#8217;m going to get done over the break and start actually doing it. So here&#8217;s my Spring break checklist:</p>
+
+<ul>
+<li>Get my &#8220;fundraise&#8221; Rails app into presentable shape and deploy it to Heroku</li>
+<li>Create a Sinatra app that utilizes either the Twitter or 4Squre API (OR a Rails app that catalogs, retrieves, and displays photo image files based on their embedded EXIF data)</li>
+<li>Start writing tests using Rspec for everything!</li>
+<li>Watch one Code School video each day (Rails, Javascript, GIT)</li>
+<li>Finish reading <em>Eloquent Ruby</em></li>
+<li>Finish reading <em>Pragmatic Thinking &amp; Learning</em></li>
+<li>Revisit my HTML tutorial book to prep for learning Javascript</li>
+<li>Finish my income taxes (Always sucks. Times a million when you owe like my sorry ass.)</li>
+</ul>
+
+
+<p>Yeah. That&#8217;s it.</p>
+
+<p>And of course blogging about my progress along the way. (I&#8217;ll try to keep the cursing to a minimum.)</p>
+
+<p>&#8220;<em>Getting good at something means going through various periods of being not-good, during which you tend to feel dumb, clueless, incompetent.</em>&#8221; - <a href="http://www.forbes.com/sites/erikaandersen/2013/03/09/the-secret-to-getting-really-really-good-at-something/">Erika Andersen</a>, <em>Forbes</em></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[So where do I begin?]]></title>
