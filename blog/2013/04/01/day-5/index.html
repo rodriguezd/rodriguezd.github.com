@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>So at the end of Day 1 ... - What did I get myself into???</title>
+  <title>Day 5? - What did I get myself into???</title>
   <meta name="author" content="David Rodriguez">
 
   
-  <meta name="description" content="Don&#8217;t you hate it when at the end of a long day, whatever that means for you, you ask yourself &#8220;So what did I really get done today?&# &hellip;">
+  <meta name="description" content="It&#8217;s me again. I didn&#8217;t really do much over the weekend. Enjoyed the really nice weather on Saturday and then Sunday was a Sunday i.e. I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rodriguezd.github.com/blog/2013/03/28/so-at-the-end-of-day-1-dot-dot-dot/">
+  <link rel="canonical" href="http://rodriguezd.github.com/blog/2013/04/01/day-5/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -69,7 +69,7 @@
   
   <header>
     
-      <h1 class="entry-title">So at the End of Day 1 ...</h1>
+      <h1 class="entry-title">Day 5?</h1>
     
     
       <p class="meta">
@@ -85,24 +85,26 @@
   
 
 
-<time datetime="2013-03-28T22:01:00-04:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time>
+<time datetime="2013-04-01T21:05:00-04:00" pubdate data-updated="true">Apr 1<span>st</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Don&#8217;t you hate it when at the end of a long day, whatever that means for you, you ask yourself &#8220;So what did I really get done today?&#8221; and then the mental math just doesn&#8217;t seem to add up? I know I can be really hard on myself and I know that I got more done than I give myself credit for but I just wish I thought &#8220;I did too much today.&#8221; more often.</p>
+<div class="entry-content"><p>It&#8217;s me again. I didn&#8217;t really do much over the weekend. Enjoyed the really nice weather on Saturday and then Sunday was a Sunday i.e. I don&#8217;t usually get a whole lot done on Sundays despite whatever my intentions may be. Just seems to usually work out that way.</p>
 
-<p>So I started the day finishing one Code School course and then starting another. Three videos in all and the accompanying exercises for each. If you&#8217;re not familiar with Code School courses, each course consists of about five to seven, five to fifteen minute videos each followed by eight to ten practice problems. I have a habit of pausing the videos often to look up associated material in an effort to understand the topic better. Needless to say, this can really slow things down. But then maybe I get more bang for my time buck. I just need to not get carried away.</p>
+<p>Today on the other hand was a different story. I spent the whole day working on my Rails app which from this point forward I will be referring to as &#8221;<em>Help A Cause</em>&#8221;. &#8220;fundraise&#8221; was always just the name of the Github repository I created for the project when I had no idea what to call it. So <em>Help A Cause</em> it is.</p>
 
-<p>Then while eating my tuna melt with chips for lunch, I decided to look up information about the Twitter API. I had no intention of this going beyond the last chip on my plate. So much for intentions. About three hours later I was still experimenting on IRB with the Twitter API via the &#8216;Twitter&#8217; Ruby gem (after about an hour of troubleshooting) and the Foursquare API via their developer site. What I was most curious about was what data one could access and what form did it take. At the end of it all, I decided that I will not pursue the Twitter API becuase of the limitations they place on the public API. I concluded it would become a problem. Foursquare looks more promising even if I may wind up duplicating some functionality that already exists on their site. But then the end goal is learning new things and practicing coding so whatever.</p>
+<p>I started off completing the addition of &#8216;Date&#8217; and &#8216;Time&#8217; fields in the event creation form. I used &#8216;date_select&#8217; and &#8216;time_select&#8217; form helpers which were new to me and took a bit to figure out how the various options worked. A lot of trial and error was involved. And for some God forsaken reason, my app insists on displaying GMT time versus local time. In the Rails console, accessing the same attributes displays local time. ??? A battle to be fought another day.</p>
 
-<p>So I never got to working on the &#8220;fundraise&#8221; app today as I intended but then I did research the APIs pretty thoroughly which I would have done later. So I guess I can call it a draw.</p>
+<p>After a bit of a break followed by lunch in Washington Square I returned determined to add a Date field to my event search. Sounded easy enough but it turned out to be a huge pain in the hiney. Could not get the date_select fields to function the way I wanted to save my life. For a good while there it didn&#8217;t matter what the hell I did with the options. The date fields (year, month, day) appeared and functioned exactly the same no matter what I changed. It turned into an elongated, shake your head with an incredulous look on your face while staring at the screen episode. Eventually I figured out that I was missing a second, non-option parameter. So got passed that but then it became &#8220;How do I access the data stored by the date_select helper in the Date object and then use it in a search with other parameters?&#8221;.</p>
 
-<p>Tomorrow I will finish that second Code School course, get in some <em>Eloquent Ruby</em> reading, but then the rest of the day is all about &#8220;fundraise&#8221;. It&#8217;s been a good while since I&#8217;ve spent so much time in one day working on dev stuff. It felt good but I have to be smarter about it. I will be tomorrow.</p>
+<p>Worked on the search for a bit but frankly my brain was getting a bit mushy by now. (I need to get better at giving my brain and myself more frequent breaks to keep my thinking more crispy. Need to get away for a bit some times. Just fighting through it is not always the best approach.) So I decided to try to deploy what I had to Heroku. I remember it not being that big a deal when I did the Michael Hartl Rails tutorial so I decided &#8220;why not?&#8221;. Yeah, well, it sounded like a good idea in theory. To make a long story short, I learned that PostgreSQL, the database of choice for Heroku, apparently has an issue with type casting string values to integer values  which I happen to do with phone numbers on a form. (Do you hear that sound of grinding metal? That&#8217;s a wrench flying into my productivity gears.) Couldn&#8217;t complete a migration of the database on Heroku. So my app only kind of, sort of deployed. And that&#8217;s where I&#8217;m starting tomorrow. But only for bit.</p>
 
-<p>&#8220;<em>Pick your battles big enough to matter, small enough to win.</em>&#8221; - Jonathan Kozol</p>
+<p>To close the day I read a few more chapters of <em>Eloquent Ruby</em>.</p>
+
+<p>&#8220;<em>Absorb what is useful, discard what is not, add what is uniquely your own.</em>&#8221; - Bruce Lee</p>
 </div>
 
 
@@ -125,7 +127,7 @@
   
 
 
-<time datetime="2013-03-28T22:01:00-04:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time>
+<time datetime="2013-04-01T21:05:00-04:00" pubdate data-updated="true">Apr 1<span>st</span>, 2013</time>
       
 
 
@@ -133,7 +135,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rodriguezd.github.com/blog/2013/03/28/so-at-the-end-of-day-1-dot-dot-dot/" data-via="DRodNYC" data-counturl="http://rodriguezd.github.com/blog/2013/03/28/so-at-the-end-of-day-1-dot-dot-dot/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rodriguezd.github.com/blog/2013/04/01/day-5/" data-via="DRodNYC" data-counturl="http://rodriguezd.github.com/blog/2013/04/01/day-5/" >Tweet</a>
   
   
   
@@ -142,10 +144,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/03/28/spring-break-equals-%3E-code/" title="Previous Post: Spring Break => Code, Code, Read, Code">&laquo; Spring Break => Code, Code, Read, Code</a>
+        <a class="basic-alignment left" href="/blog/2013/03/29/day-2-thank-god-its-friday/" title="Previous Post: Day 2 (Thank God it's Friday)">&laquo; Day 2 (Thank God it's Friday)</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/03/29/day-2-thank-god-its-friday/" title="Next Post: Day 2 (Thank God it's Friday)">Day 2 (Thank God it's Friday) &raquo;</a>
       
     </p>
   </footer>
