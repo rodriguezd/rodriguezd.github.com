@@ -4,9 +4,9 @@ title: "Day 2 (Thank God it's Friday)"
 date: 2013-03-29 22:28
 comments: true
 categories:
-published: false
+published: true
 ---
-Got some Code School done. Read several chapters of *Eloquent Ruby* interacting with IRB along the way. Then banged my head against the wall for several hours trying to make my Rails app look "prettier" with Twitter bootstrap. Met with as much success as Congress on, well, anything. Bootstrap is easy enough to install, but unfortunately that by iteslf only gets you from the crappy Rails default look to crappy with smoother edges. At least I figured out how to make my buttons looks nicer.
+Got some Code School done. Read several chapters of *Eloquent Ruby* interacting with IRB along the way. Then banged my head against the wall for several hours trying to make my Rails app look "prettier" with Twitter bootstrap. Met with as much success as Congress on, well, anything. Bootstrap is easy enough to install, but unfortunately that by iteslf only gets you from the crappy Rails default look to crappy with smoother edges. At least I figured out how to make my buttons look nicer.
 
 Lesson learned: Worry about functionality first, making it look "pretty" later.
 
