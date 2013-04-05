@@ -4,7 +4,7 @@ title: "Day 6: The Taming of Heroku"
 date: 2013-04-02 15:19
 comments: true
 categories:
-published: false
+published: true
 ---
 Last night I told myself that I was not going to spend more than a half-hour today trying to finish deploying my Help A Cause app on Heroku. That's what I told myself. I meant it to. I really did.
 

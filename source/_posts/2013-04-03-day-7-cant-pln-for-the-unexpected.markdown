@@ -4,7 +4,7 @@ title: "Day 7: Can't plan for the unexpected"
 date: 2013-04-03 09:16
 comments: true
 categories:
-published: false
+published: true
 ---
 
 So it turns out that yesterday I was able to reserve two tickets to the *Daily Show with Jon Stewart* taping today. Completely unexpected. I checked online and lo and behold there were tickets available. I've never seen that before. My girlfriend and I are big fans so I jumped on it. Very exciting. Kind of an early birthday surprise for the girlfriend since I was hoping to do this very thing around her birthday in May.

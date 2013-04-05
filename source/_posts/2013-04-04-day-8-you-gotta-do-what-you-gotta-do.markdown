@@ -4,7 +4,7 @@ title: "Day 8: You gotta do what you gotta do"
 date: 2013-04-04 15:09
 comments: true
 categories:
-published: false
+published: true
 ---
 
 Today I had to get myself to Stony Brook University for a STEM (Science, Technology, Engineering, and Math) conference my high school wanted me to attend. Not exactly something I was looking forward to doing during my Spring break. They want to start a new program next year and they want me to be one of the teachers. (If you have read my first blog post, you probably picked up on the irony here.) My engineering degree guaranteed that there was no way I wasn't going to be picked for this.
