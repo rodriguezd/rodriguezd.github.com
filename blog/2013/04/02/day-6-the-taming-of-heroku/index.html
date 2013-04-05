@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Day 2 (Thank God it's Friday) - What did I get myself into???</title>
+  <title>Day 6: The Taming of Heroku - What did I get myself into???</title>
   <meta name="author" content="David Rodriguez">
 
   
-  <meta name="description" content="Got some Code School done. Read several chapters of Eloquent Ruby interacting with IRB along the way. Then banged my head against the wall for &hellip;">
+  <meta name="description" content="Last night I told myself that I was not going to spend more than a half-hour today trying to finish deploying my Help A Cause app on Heroku. That&# &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rodriguezd.github.com/blog/2013/03/29/day-2-thank-god-its-friday/">
+  <link rel="canonical" href="http://rodriguezd.github.com/blog/2013/04/02/day-6-the-taming-of-heroku/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -69,7 +69,7 @@
   
   <header>
     
-      <h1 class="entry-title">Day 2 (Thank God It's Friday)</h1>
+      <h1 class="entry-title">Day 6: The Taming of Heroku</h1>
     
     
       <p class="meta">
@@ -85,22 +85,28 @@
   
 
 
-<time datetime="2013-03-29T22:28:00-04:00" pubdate data-updated="true">Mar 29<span>th</span>, 2013</time>
+<time datetime="2013-04-02T15:19:00-04:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Got some Code School done. Read several chapters of <em>Eloquent Ruby</em> interacting with IRB along the way. Then banged my head against the wall for several hours trying to make my Rails app look &#8220;prettier&#8221; with Twitter bootstrap. Met with as much success as Congress on, well, anything. Bootstrap is easy enough to install, but unfortunately that by iteslf only gets you from the crappy Rails default look to crappy with smoother edges. At least I figured out how to make my buttons look nicer.</p>
+<div class="entry-content"><p>Last night I told myself that I was not going to spend more than a half-hour today trying to finish deploying my Help A Cause app on Heroku. That&#8217;s what I told myself. I meant it to. I really did.</p>
 
-<p>Lesson learned: Worry about functionality first, making it look &#8220;pretty&#8221; later.</p>
+<p>I started off reading some from the <em>Learning Rails 3</em> book which I was reading on the subway ride to NYU which is where I was going to be spending the day. (My fiance works at NYU.) I read a couple chapters then started playing an episode of <a href="http://rubyrogues.com/"><em>Ruby Rogues</em></a> and switched back to deploying on Heroku again. That&#8217;s when I became a victim of quick success. I resolved the last issue I was having yesterday pretty quickly and that got me excited thinking I just might be close to it working. (Not really.) And I kept telling myself, &#8220;But maybe this is the last error message before it works!&#8221;.</p>
 
-<p>On a totally unrelated topic, I saw the documentary <a href="http://revolutionaryoptimists.org/">The Revolutionary Optimists</a> in the city tonight at <a href="http://www.cinemavillage.com/chc/cv/">Cinema Village</a>. Great documentary, great story. I highly recommend it. Two thumbs it. Go see it.</p>
+<p>I discovered (unfortunately not soon enough) that Heroku seems to run through the Rails app migrations sequentially one by one as it tries to build the database in PostgreSQL. Not sure why this is the way it does it but it just does. There has to be a better way. What was causing me problems was that every time Heroku came across a migration that did something that PostgreSQL did not like, it would puke some cryptic error about some DB incompatibility that most likely did not actually exist in my database any more. It existed in that particular migration it was trying to execute at the time but not in the current schema. Heroku was making me pay for offenses my db commited in its youth. So eventually I figured out that if I deleted the offending migration file and re-ran the migration, Heroku would get further before finding the next migration it didn&#8217;t care for. Eventually I got it to finish the migration and Walla! the app came online.</p>
 
-<p>Gonna take a break tomorrow. Have a great weekend.</p>
+<p>Had lunch and afterwards joined my girlfriend in visiting a restaurant we&#8217;re considering for our post-wedding dinner. Not happening til August 2014 but you can never start planning too soon.</p>
 
-<p>&#8220;<em>I firmly believe that any man&#8217;s finest hour, the greatest fulfillment of all that he holds dear, is that moment when he has worked his heart out in a good cause and lies exhausted on the field of battle - victorious.</em>&#8221; - Vincent Lombardi</p>
+<p>After getting back, I decided to try to populate the production database with the data I had in my development database so I had something to work with. Shouldn&#8217;t be too hard. All it should take is &#8220;heroku db:push&#8221;, right? I entered the command, hit enter, and then a few seconds later I learned that Heroku wasn&#8217;t done with me yet. &#8220;Time zone displacement out of range.&#8221; Just rolls off the tongue doesn&#8217;t it? Whatever was going on it caused the push to fail and the app to crash to boot. So I hit Google and Stack Overflow and tried to figure out what in the world this error might mean.</p>
+
+<p>Long story short, I came across a proposed solution which I found hard to believe. You&#8217;re gonna love this. The proposed solution was to switch to Ruby 1.9.2, reinstall the necessary gems, conduct the push, and then switch back to Ruby 1.9.3. Seriously? With great skepticism I tried it and wouldn&#8217;t you know it, it worked. Apparently there&#8217;s something about the Heroku db that is incompatible with Ruby 1.9.3. So the only way to get the data push to work is to use 1.9.2. Wow. But everything worked after that.</p>
+
+<p>I ended the day looking into Sinatra. I installed the gem and created and ran my first, basic-as-it-gets Sinatra app. Looks pretty interesting. Can&#8217;t wait to learn more.</p>
+
+<p>&#8220;<em>Our greatest glory is not in never failing, but in rising up every time we fail</em> - Ralph Waldo Emerson&#8221;</p>
 </div>
 
 
@@ -123,7 +129,7 @@
   
 
 
-<time datetime="2013-03-29T22:28:00-04:00" pubdate data-updated="true">Mar 29<span>th</span>, 2013</time>
+<time datetime="2013-04-02T15:19:00-04:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2013</time>
       
 
 
@@ -131,7 +137,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rodriguezd.github.com/blog/2013/03/29/day-2-thank-god-its-friday/" data-via="DRodNYC" data-counturl="http://rodriguezd.github.com/blog/2013/03/29/day-2-thank-god-its-friday/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rodriguezd.github.com/blog/2013/04/02/day-6-the-taming-of-heroku/" data-via="DRodNYC" data-counturl="http://rodriguezd.github.com/blog/2013/04/02/day-6-the-taming-of-heroku/" >Tweet</a>
   
   
   
@@ -140,10 +146,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/03/28/so-at-the-end-of-day-1-dot-dot-dot/" title="Previous Post: So at the end of Day 1 ...">&laquo; So at the end of Day 1 ...</a>
+        <a class="basic-alignment left" href="/blog/2013/04/01/day-5/" title="Previous Post: Day 5?">&laquo; Day 5?</a>
       
       
-        <a class="basic-alignment right" href="/blog/2013/04/01/day-5/" title="Next Post: Day 5?">Day 5? &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2013/04/03/day-7-cant-pln-for-the-unexpected/" title="Next Post: Day 7: Can't plan for the unexpected">Day 7: Can't plan for the unexpected &raquo;</a>
       
     </p>
   </footer>
