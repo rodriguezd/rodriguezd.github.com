@@ -20,4 +20,4 @@ Long story short, I came across a proposed solution which I found hard to believ
 
 I ended the day looking into Sinatra. I installed the gem and created and ran my first, basic-as-it-gets Sinatra app. Looks pretty interesting. Can't wait to learn more.
 
-"*Our greatest glory is not in never failing, but in rising up every time we fail* - Ralph Waldo Emerson"
+"*Our greatest glory is not in never failing, but in rising up every time we fail*" - Ralph Waldo Emerson

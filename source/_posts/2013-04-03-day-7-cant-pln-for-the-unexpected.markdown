@@ -17,4 +17,4 @@ C'est la vie!
 
 And on a big, exciting, positive note, I received an email inviting me to interview for the [Flatiron School](http://flatironschool.com/)'s' summer session. Skype interview on Sunday. Looking forward to it. Keeping fingers crossed. If you don't know about the school, check it out.
 
-"*To accomplish great things, we must not only act, but also dream; not only plan, but also belive.* - Antoie France"
+"*To accomplish great things, we must not only act, but also dream; not only plan, but also believe.*" - Antoie France
