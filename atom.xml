@@ -4,7 +4,7 @@
   <title><![CDATA[What did I get myself into???]]></title>
   <link href="http://rodriguezd.github.com/atom.xml" rel="self"/>
   <link href="http://rodriguezd.github.com/"/>
-  <updated>2013-06-09T17:02:18-04:00</updated>
+  <updated>2013-06-09T17:05:38-04:00</updated>
   <id>http://rodriguezd.github.com/</id>
   <author>
     <name><![CDATA[David Rodriguez]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Image Test]]></title>
-    <link href="http://rodriguezd.github.com/blog/2013/06/09/image-test/"/>
-    <updated>2013-06-09T16:57:00-04:00</updated>
-    <id>http://rodriguezd.github.com/blog/2013/06/09/image-test</id>
-    <content type="html"><![CDATA[<p><img src="../images/68b.png"></p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[No Turning Back Now]]></title>
