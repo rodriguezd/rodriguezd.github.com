@@ -4,7 +4,7 @@
   <title><![CDATA[What did I get myself into???]]></title>
   <link href="http://rodriguezd.github.com/atom.xml" rel="self"/>
   <link href="http://rodriguezd.github.com/"/>
-  <updated>2013-06-09T17:09:48-04:00</updated>
+  <updated>2013-06-16T20:39:57-04:00</updated>
   <id>http://rodriguezd.github.com/</id>
   <author>
     <name><![CDATA[David Rodriguez]]></name>
@@ -12,6 +12,86 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Can one ever know too many command line tricks?]]></title>
+    <link href="http://rodriguezd.github.com/blog/2013/06/16/one-can-never-know-too-many-command-line-tricks/"/>
+    <updated>2013-06-16T18:37:00-04:00</updated>
+    <id>http://rodriguezd.github.com/blog/2013/06/16/one-can-never-know-too-many-command-line-tricks</id>
+    <content type="html"><![CDATA[<p>I don&#8217;t think so either.</p>
+
+<p>Looking through some presentation decks on <a href="https://speakerdeck.com/">speakerdeck.com</a>, I came across two presentations addressing this which I can never can get enough of. The two decks are &#8221;<a href="https://speakerdeck.com/keithrbennett/unix-command-line-productivity-tips">Unix Command Line Productivity Tips</a>&#8221; by Keith Bennet and &#8221;<a href="https://speakerdeck.com/janosgyerik/time-saving-tricks-on-the-command-line">Time-saving tricks on the command line</a>&#8221; by Janos Gyerik.</p>
+
+<p>Following are some of the command line gems I gathered from their presentations. If you are unfamiliar with any of them, I strongly encourage you to try them out. I suspect you will like what you find.</p>
+
+<ul>
+<li><strong>cd -</strong></li>
+</ul>
+
+
+<p>(The dash is part of the command) Ever find yourself jumping back and forth between two directories? This puppy toggles the current and previous directory.</p>
+
+<ul>
+<li><strong>pushd</strong> and <strong>popd</strong></li>
+</ul>
+
+
+<p>Pushd is short for &#8216;push directory&#8217; and popd for &#8216;pop directory&#8217;. If you execute <strong>&#8216;pushd .&#8217;</strong> and then move to a different directory, you can then execute <strong>&#8216;popd&#8217;</strong> and it will take you back to the directory you pushed previously. How cool is that?!?</p>
+
+<ul>
+<li><strong>!$</strong></li>
+</ul>
+
+
+<p>Not pretty but this captures the last parameter in the previously executed commad. For example, if you <strong>&#8216;touch file.txt&#8217;</strong> and then <strong>&#8216;subl !$&#8217;</strong>, Sublime Text opens <strong>file.txt</strong>.</p>
+
+<h3>For your editing on the commad line pleasure:</h3>
+
+<ul>
+<li><strong>ctrl - w</strong></li>
+</ul>
+
+
+<p>Deletes the last word you have entered on the commad line</p>
+
+<ul>
+<li><strong>ctrl - k</strong></li>
+</ul>
+
+
+<p>Deletes from the cursor position to the end of the line</p>
+
+<ul>
+<li><strong>ctrl - y</strong></li>
+</ul>
+
+
+<p>Pastes whatever you deleted in the previous commad</p>
+
+<ul>
+<li><strong>cntrl-a</strong></li>
+</ul>
+
+
+<p>Jump to the start of the line</p>
+
+<ul>
+<li><strong>cntrl - e</strong></li>
+</ul>
+
+
+<p>Jump to the end of the line.</p>
+
+<ul>
+<li><strong>option - left/right</strong></li>
+</ul>
+
+
+<p>Skip left/right one word at a time</p>
+
+<p>Enjoy.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[No Turning Back Now]]></title>
