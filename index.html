@@ -9,7 +9,7 @@
   <meta name="author" content="David Rodriguez">
 
   
-  <meta name="description" content="I don&#8217;t think so either. Looking through some presentation decks on speakerdeck.com, I came across two presentations addressing this which I &hellip;">
+  <meta name="description" content="So I just finished my third week of the Flatiron School and the experience has been nothing short of fantastic. Hard work, but all worth it. And one &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +66,48 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/21/six-degrees-of-separation-from-everyone-nyc-ruby-slash-rails-meetups/">Don&#8217;t Miss Out: NYC Ruby/Rails Community</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-21T23:16:00-04:00" pubdate data-updated="true">Jun 21<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So I just finished my third week of the Flatiron School and the experience has been nothing short of fantastic. Hard work, but all worth it. And one of the bonuses of being a student at the school is having guest developer notables come in and share their knowledge, insights, experiences, and excitement about what they do with us.</p>
+
+<p>I thought I would write about what has been a common thread amongst several of their talks, praise for the NYC Ruby/Rails community. I couldn’t agree with them more. My experience with the community began over a year ago with the first Meetup I ever attended. It was a Thursday Hacker Hours hosted by Aidan Feldman (a recent speaker at Flatiron).  Aidan was the first person I met/spoke to at a Meetup. The second person I spoke to, introduced to by Aidan, was Blake Johnson (a current teaching assistant at Flatiron).  After that meetup there have been many others.</p>
+
+<p>Don’t be mistaken, it’s not all about meetups, there are also hackathons, code retreats, happy hours, and conferences where the community congregates to share ideas, stories, knowledge, lessons learned, and sometimes just generally hang out and have a good time with like-minded people. (The occasional free food and beer doesn’t hurt either.) And you never know who you might meet or what you may learn at one of these events. But one thing you can be sure of is that if you need help with something or want to learn more about anything, all you need to do is ask. Don’t be shy. Members of the NYC Ruby/Rails community are always very willing to help and they are extremely welcoming and accepting of those who may just be getting started. It doesn’t matter if you are an aspiring developer or maybe want to turn your “next big thing” idea into a reality.</p>
+
+<p>I have never left a meetup or other community event without having learned something new. Whether it’s about some new Ruby gems, or Rails projects, or development techniques/tools, or lessons learned, or many other things, there is always an opportunity to learn. Sometimes you learn a whole lot! The community can be an invaluable resource for someone who is trying to learn on their own as I was. And all that from experienced programmers who have seen and done it all. Many of whom where at the same point you are at earlier in their careers so they can identify. It’s ok to admit that you’re just a beginner. No one is going to make fun of you. And the more questions you ask the more you will learn. Take advantage.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -520,54 +562,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/01/day-5/">Day 5?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-01T21:05:00-04:00" pubdate data-updated="true">Apr 1<span>st</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>It&#8217;s me again. I didn&#8217;t really do much over the weekend. Enjoyed the really nice weather on Saturday and then Sunday was a Sunday i.e. I don&#8217;t usually get a whole lot done on Sundays despite whatever my intentions may be. Just seems to usually work out that way.</p>
-
-<p>Today on the other hand was a different story. I spent the whole day working on my Rails app which from this point forward I will be referring to as &#8221;<em>Help A Cause</em>&#8221;. &#8220;fundraise&#8221; was always just the name of the Github repository I created for the project when I had no idea what to call it. So <em>Help A Cause</em> it is.</p>
-
-<p>I started off completing the addition of &#8216;Date&#8217; and &#8216;Time&#8217; fields in the event creation form. I used &#8216;date_select&#8217; and &#8216;time_select&#8217; form helpers which were new to me and took a bit to figure out how the various options worked. A lot of trial and error was involved. And for some God forsaken reason, my app insists on displaying GMT time versus local time. In the Rails console, accessing the same attributes displays local time. ??? A battle to be fought another day.</p>
-
-<p>After a bit of a break followed by lunch in Washington Square I returned determined to add a Date field to my event search. Sounded easy enough but it turned out to be a huge pain in the hiney. Could not get the date_select fields to function the way I wanted to save my life. For a good while there it didn&#8217;t matter what the hell I did with the options. The date fields (year, month, day) appeared and functioned exactly the same no matter what I changed. It turned into an elongated, shake your head with an incredulous look on your face while staring at the screen episode. Eventually I figured out that I was missing a second, non-option parameter. So got passed that but then it became &#8220;How do I access the data stored by the date_select helper in the Date object and then use it in a search with other parameters?&#8221;.</p>
-
-<p>Worked on the search for a bit but frankly my brain was getting a bit mushy by now. (I need to get better at giving my brain and myself more frequent breaks to keep my thinking more crispy. Need to get away for a bit some times. Just fighting through it is not always the best approach.) So I decided to try to deploy what I had to Heroku. I remember it not being that big a deal when I did the Michael Hartl Rails tutorial so I decided &#8220;why not?&#8221;. Yeah, well, it sounded like a good idea in theory. To make a long story short, I learned that PostgreSQL, the database of choice for Heroku, apparently has an issue with type casting string values to integer values  which I happen to do with phone numbers on a form. (Do you hear that sound of grinding metal? That&#8217;s a wrench flying into my productivity gears.) Couldn&#8217;t complete a migration of the database on Heroku. So my app only kind of, sort of deployed. And that&#8217;s where I&#8217;m starting tomorrow. But only for bit.</p>
-
-<p>To close the day I read a few more chapters of <em>Eloquent Ruby</em>.</p>
-
-<p>&#8220;<em>Absorb what is useful, discard what is not, add what is uniquely your own.</em>&#8221; - Bruce Lee</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -583,6 +577,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/06/21/six-degrees-of-separation-from-everyone-nyc-ruby-slash-rails-meetups/">Don&#8217;t miss out: NYC Ruby/Rails Community</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/06/16/one-can-never-know-too-many-command-line-tricks/">Can one ever know too many command line tricks?</a>
       </li>
     
@@ -596,10 +594,6 @@
     
       <li class="post">
         <a href="/blog/2013/04/09/the-beginning-of-the-beginning/">The Beginning of the Beginning</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/08/the-future-looks-bright/">The Future Looks Bright</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="David Rodriguez">
 
   
-  <meta name="description" content="Got some Code School done. Read several chapters of Eloquent Ruby interacting with IRB along the way. Then banged my head against the wall for &hellip;">
+  <meta name="description" content="It&#8217;s me again. I didn&#8217;t really do much over the weekend. Enjoyed the really nice weather on Saturday and then Sunday was a Sunday i.e. I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +66,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/01/day-5/">Day 5?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-01T21:05:00-04:00" pubdate data-updated="true">Apr 1<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It&#8217;s me again. I didn&#8217;t really do much over the weekend. Enjoyed the really nice weather on Saturday and then Sunday was a Sunday i.e. I don&#8217;t usually get a whole lot done on Sundays despite whatever my intentions may be. Just seems to usually work out that way.</p>
+
+<p>Today on the other hand was a different story. I spent the whole day working on my Rails app which from this point forward I will be referring to as &#8221;<em>Help A Cause</em>&#8221;. &#8220;fundraise&#8221; was always just the name of the Github repository I created for the project when I had no idea what to call it. So <em>Help A Cause</em> it is.</p>
+
+<p>I started off completing the addition of &#8216;Date&#8217; and &#8216;Time&#8217; fields in the event creation form. I used &#8216;date_select&#8217; and &#8216;time_select&#8217; form helpers which were new to me and took a bit to figure out how the various options worked. A lot of trial and error was involved. And for some God forsaken reason, my app insists on displaying GMT time versus local time. In the Rails console, accessing the same attributes displays local time. ??? A battle to be fought another day.</p>
+
+<p>After a bit of a break followed by lunch in Washington Square I returned determined to add a Date field to my event search. Sounded easy enough but it turned out to be a huge pain in the hiney. Could not get the date_select fields to function the way I wanted to save my life. For a good while there it didn&#8217;t matter what the hell I did with the options. The date fields (year, month, day) appeared and functioned exactly the same no matter what I changed. It turned into an elongated, shake your head with an incredulous look on your face while staring at the screen episode. Eventually I figured out that I was missing a second, non-option parameter. So got passed that but then it became &#8220;How do I access the data stored by the date_select helper in the Date object and then use it in a search with other parameters?&#8221;.</p>
+
+<p>Worked on the search for a bit but frankly my brain was getting a bit mushy by now. (I need to get better at giving my brain and myself more frequent breaks to keep my thinking more crispy. Need to get away for a bit some times. Just fighting through it is not always the best approach.) So I decided to try to deploy what I had to Heroku. I remember it not being that big a deal when I did the Michael Hartl Rails tutorial so I decided &#8220;why not?&#8221;. Yeah, well, it sounded like a good idea in theory. To make a long story short, I learned that PostgreSQL, the database of choice for Heroku, apparently has an issue with type casting string values to integer values  which I happen to do with phone numbers on a form. (Do you hear that sound of grinding metal? That&#8217;s a wrench flying into my productivity gears.) Couldn&#8217;t complete a migration of the database on Heroku. So my app only kind of, sort of deployed. And that&#8217;s where I&#8217;m starting tomorrow. But only for bit.</p>
+
+<p>To close the day I read a few more chapters of <em>Eloquent Ruby</em>.</p>
+
+<p>&#8220;<em>Absorb what is useful, discard what is not, add what is uniquely your own.</em>&#8221; - Bruce Lee</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -276,6 +324,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/06/21/six-degrees-of-separation-from-everyone-nyc-ruby-slash-rails-meetups/">Don&#8217;t miss out: NYC Ruby/Rails Community</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/06/16/one-can-never-know-too-many-command-line-tricks/">Can one ever know too many command line tricks?</a>
       </li>
     
@@ -289,10 +341,6 @@
     
       <li class="post">
         <a href="/blog/2013/04/09/the-beginning-of-the-beginning/">The Beginning of the Beginning</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/08/the-future-looks-bright/">The Future Looks Bright</a>
       </li>
     
   </ul>

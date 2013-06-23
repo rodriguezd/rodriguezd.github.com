@@ -2,73 +2,79 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://rodriguezd.github.com/blog/2013/03/21/so-where-do-i-begin/</loc>
-        <lastmod>2013-03-24T21:46:14-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/blog/2013/03/28/spring-break-equals-%3E-code/</loc>
-        <lastmod>2013-03-28T09:38:29-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
     </url>
     <url>
         <loc>
             http://rodriguezd.github.com/blog/2013/03/28/so-at-the-end-of-day-1-dot-dot-dot/
         </loc>
-        <lastmod>2013-03-28T23:08:57-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/blog/2013/03/29/day-2-thank-god-its-friday/</loc>
-        <lastmod>2013-04-02T00:23:54-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/blog/2013/04/01/day-5/</loc>
-        <lastmod>2013-04-02T00:23:13-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/blog/2013/04/02/day-6-the-taming-of-heroku/</loc>
-        <lastmod>2013-04-07T19:55:59-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/blog/2013/04/03/day-7-cant-pln-for-the-unexpected/</loc>
-        <lastmod>2013-04-07T19:54:27-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
     </url>
     <url>
         <loc>
             http://rodriguezd.github.com/blog/2013/04/04/day-8-you-gotta-do-what-you-gotta-do/
         </loc>
-        <lastmod>2013-04-05T11:01:10-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/blog/2013/04/05/day-9-the-tax-man-cometh/</loc>
-        <lastmod>2013-04-06T13:04:19-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/blog/2013/04/08/the-future-looks-bright/</loc>
-        <lastmod>2013-04-08T21:29:46-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/blog/2013/04/09/the-beginning-of-the-beginning/</loc>
-        <lastmod>2013-04-10T09:18:56-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/blog/2013/04/11/moving-along/</loc>
-        <lastmod>2013-04-12T16:09:29-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/blog/2013/04/15/no-turning-back-now/</loc>
-        <lastmod>2013-04-16T12:46:58-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
     </url>
     <url>
         <loc>
             http://rodriguezd.github.com/blog/2013/06/16/one-can-never-know-too-many-command-line-tricks/
         </loc>
-        <lastmod>2013-06-16T20:39:03-04:00</lastmod>
+        <lastmod>2013-06-17T08:55:40-04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://rodriguezd.github.com/blog/2013/06/21/six-degrees-of-separation-from-everyone-nyc-ruby-slash-rails-meetups/
+        </loc>
+        <lastmod>2013-06-23T18:34:49-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/blog/archives/</loc>
-        <lastmod>2013-06-16T20:39:03-04:00</lastmod>
+        <lastmod>2013-06-23T18:34:49-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/</loc>
-        <lastmod>2013-06-16T20:39:03-04:00</lastmod>
+        <lastmod>2013-06-23T18:34:49-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/robots.txt</loc>
