@@ -4,7 +4,7 @@
   <title><![CDATA[What did I get myself into???]]></title>
   <link href="http://rodriguezd.github.com/atom.xml" rel="self"/>
   <link href="http://rodriguezd.github.com/"/>
-  <updated>2013-06-23T18:35:27-04:00</updated>
+  <updated>2013-07-10T03:00:58-04:00</updated>
   <id>http://rodriguezd.github.com/</id>
   <author>
     <name><![CDATA[David Rodriguez]]></name>
@@ -12,6 +12,123 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[When application.html.erb just doesn't cut it]]></title>
+    <link href="http://rodriguezd.github.com/blog/2013/07/10/when-application-dot-html-dot-erb-doesnt-cut-it-dot/"/>
+    <updated>2013-07-10T01:19:00-04:00</updated>
+    <id>http://rodriguezd.github.com/blog/2013/07/10/when-application-dot-html-dot-erb-doesnt-cut-it-dot</id>
+    <content type="html"><![CDATA[<p>Recently I was working on a Rails application on which I had a need to apply layouts to views other than the default <code>application.html.erb</code> alyout. The following is what I discovered on how to do that. (<em>I make no claim that the following are the only and/or best ways to do this. Rails being Rails there are probably at least ten additionals ways.</em>)</p>
+
+<h3>Controller Level Layout</h3>
+
+<p>If you wish to use a different layout for all the views associated with a particular controller, you have two options. The first option is to create a new layout with the same name as the controller you wish to apply it to. For example, let&#8217;s say you have a controller named <code>UsersController</code> in your app, you could place a layout file named <code>users.html.erb</code> in the <code>app/views/layouts</code> folder. Rails will then apply the <code>users.html.erb</code> layout to all the Users views.</p>
+
+<p>The second option is to include <code>layout "alternate_layout"</code> in the controller&#8217;s class defnition. The alternate layout file must be present in the <code>app/views/layouts</code> folder. In this case the file&#8217;s name does not have to be the same as the controller&#8217;s.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">layout</span> <span class="s2">&quot;alternate_layout&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">### controller code ###</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Action/View Specific Layouts</h3>
+
+<p>But what if you don&#8217;t want to apply an alternative layout to an entire controller? What if you only want to apply it to specific views? You have a few options here also.</p>
+
+<p>One option is to specify which controller actions an alternative layout is to be apllied to. You can do so like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">layout</span> <span class="s2">&quot;alternate_layout&quot;</span><span class="p">,</span> <span class="ss">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:index</span><span class="p">,</span> <span class="ss">:show</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">### controller code ###</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>application.html.erb</code> will be applied to the remainder of the action views.</p>
+
+<p>A second option is to add a method in your controller which determines which layout to use at run time.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">layout</span> <span class="ss">:resolve_layout</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">### controller code ###</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kp">private</span>
+</span><span class='line'>  <span class="k">def</span> <span class="ss">:resolve_layout</span>
+</span><span class='line'>    <span class="k">case</span> <span class="n">action_name</span>
+</span><span class='line'>      <span class="k">when</span> <span class="s1">&#39;show&#39;</span>
+</span><span class='line'>        <span class="s1">&#39;show_layout&#39;</span>
+</span><span class='line'>      <span class="k">when</span> <span class="s1">&#39;index&#39;</span>
+</span><span class='line'>        <span class="s1">&#39;index_layout&#39;</span>
+</span><span class='line'>      <span class="k">else</span>
+</span><span class='line'>        <span class="s1">&#39;application&#39;</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And if you choose you can specify an alternative layout at the controller action level.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">show</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">render</span> <span class="ss">:layout</span> <span class="o">=&gt;</span> <span class="s1">&#39;show_layout&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">### action code ###</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Don't miss out: NYC Ruby/Rails Community]]></title>

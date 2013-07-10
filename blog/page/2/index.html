@@ -9,7 +9,7 @@
   <meta name="author" content="David Rodriguez">
 
   
-  <meta name="description" content="It&#8217;s me again. I didn&#8217;t really do much over the weekend. Enjoyed the really nice weather on Saturday and then Sunday was a Sunday i.e. I &hellip;">
+  <meta name="description" content="Last night I told myself that I was not going to spend more than a half-hour today trying to finish deploying my Help A Cause app on Heroku. That&# &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +66,56 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/02/day-6-the-taming-of-heroku/">Day 6: The Taming of Heroku</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-02T15:19:00-04:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Last night I told myself that I was not going to spend more than a half-hour today trying to finish deploying my Help A Cause app on Heroku. That&#8217;s what I told myself. I meant it to. I really did.</p>
+
+<p>I started off reading some from the <em>Learning Rails 3</em> book which I was reading on the subway ride to NYU which is where I was going to be spending the day. (My fiance works at NYU.) I read a couple chapters then started playing an episode of <a href="http://rubyrogues.com/"><em>Ruby Rogues</em></a> and switched back to deploying on Heroku again. That&#8217;s when I became a victim of quick success. I resolved the last issue I was having yesterday pretty quickly and that got me excited thinking I just might be close to it working. (Not really.) And I kept telling myself, &#8220;But maybe this is the last error message before it works!&#8221;.</p>
+
+<p>I discovered (unfortunately not soon enough) that Heroku seems to run through the Rails app migrations sequentially one by one as it tries to build the database in PostgreSQL. Not sure why this is the way it does it but it just does. There has to be a better way. What was causing me problems was that every time Heroku came across a migration that did something that PostgreSQL did not like, it would puke some cryptic error about some DB incompatibility that most likely did not actually exist in my database any more. It existed in that particular migration it was trying to execute at the time but not in the current schema. Heroku was making me pay for offenses my db commited in its youth. So eventually I figured out that if I deleted the offending migration file and re-ran the migration, Heroku would get further before finding the next migration it didn&#8217;t care for. Eventually I got it to finish the migration and Walla! the app came online.</p>
+
+<p>Had lunch and afterwards joined my girlfriend in visiting a restaurant we&#8217;re considering for our post-wedding dinner. Not happening til August 2014 but you can never start planning too soon.</p>
+
+<p>After getting back, I decided to try to populate the production database with the data I had in my development database so I had something to work with. Shouldn&#8217;t be too hard. All it should take is &#8220;heroku db:push&#8221;, right? I entered the command, hit enter, and then a few seconds later I learned that Heroku wasn&#8217;t done with me yet. &#8220;Time zone displacement out of range.&#8221; Just rolls off the tongue doesn&#8217;t it? Whatever was going on it caused the push to fail and the app to crash to boot. So I hit Google and Stack Overflow and tried to figure out what in the world this error might mean.</p>
+
+<p>Long story short, I came across a proposed solution which I found hard to believe. You&#8217;re gonna love this. The proposed solution was to switch to Ruby 1.9.2, reinstall the necessary gems, conduct the push, and then switch back to Ruby 1.9.3. Seriously? With great skepticism I tried it and wouldn&#8217;t you know it, it worked. Apparently there&#8217;s something about the Heroku db that is incompatible with Ruby 1.9.3. So the only way to get the data push to work is to use 1.9.2. Wow. But everything worked after that.</p>
+
+<p>I ended the day looking into Sinatra. I installed the gem and created and ran my first, basic-as-it-gets Sinatra app. Looks pretty interesting. Can&#8217;t wait to learn more.</p>
+
+<p>&#8220;<em>Our greatest glory is not in never failing, but in rising up every time we fail</em>&#8221; - Ralph Waldo Emerson</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -324,6 +374,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/07/10/when-application-dot-html-dot-erb-doesnt-cut-it-dot/">When application.html.erb just doesn&#8217;t cut it</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/06/21/six-degrees-of-separation-from-everyone-nyc-ruby-slash-rails-meetups/">Don&#8217;t miss out: NYC Ruby/Rails Community</a>
       </li>
     
@@ -337,10 +391,6 @@
     
       <li class="post">
         <a href="/blog/2013/04/11/moving-along/">Moving Along</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/09/the-beginning-of-the-beginning/">The Beginning of the Beginning</a>
       </li>
     
   </ul>
