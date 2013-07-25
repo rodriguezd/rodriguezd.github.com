@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Day 2 (Thank God it's Friday) - What did I get myself into???</title>
+  <title>Rails Console: Useful tricks - What did I get myself into???</title>
   <meta name="author" content="David Rodriguez">
 
   
-  <meta name="description" content="Got some Code School done. Read several chapters of Eloquent Ruby interacting with IRB along the way. Then banged my head against the wall for &hellip;">
+  <meta name="description" content="The past couple of weeks I&#8217;ve been engaged in what could be best described as a love/hate relationship with the Rails console. I&#8217;m not &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rodriguezd.github.com/blog/2013/03/29/day-2-thank-god-its-friday/">
+  <link rel="canonical" href="http://rodriguezd.github.com/blog/2013/07/24/rails-console-some-tricks/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -69,7 +69,7 @@
   
   <header>
     
-      <h1 class="entry-title">Day 2 (Thank God It's Friday)</h1>
+      <h1 class="entry-title">Rails Console: Useful Tricks</h1>
     
     
       <p class="meta">
@@ -85,22 +85,28 @@
   
 
 
-<time datetime="2013-03-29T22:28:00-04:00" pubdate data-updated="true">Mar 29<span>th</span>, 2013</time>
+<time datetime="2013-07-24T22:22:00-04:00" pubdate data-updated="true">Jul 24<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Got some Code School done. Read several chapters of <em>Eloquent Ruby</em> interacting with IRB along the way. Then banged my head against the wall for several hours trying to make my Rails app look &#8220;prettier&#8221; with Twitter bootstrap. Met with as much success as Congress on, well, anything. Bootstrap is easy enough to install, but unfortunately that by iteslf only gets you from the crappy Rails default look to crappy with smoother edges. At least I figured out how to make my buttons look nicer.</p>
+<div class="entry-content"><p>The past couple of weeks I&#8217;ve been engaged in what could be best described as a love/hate relationship with the Rails console. I&#8217;m not alone. At times, it can be your best friend, other times it can leave you bewildered, frustrated, and wishing you had a bat. But it&#8217;s not always console&#8217;s fault, you have to know how to help console help you. There are a few tricks which can go a long way to helping you do that. Following are a few of the more useful and interesting ones.</p>
 
-<p>Lesson learned: Worry about functionality first, making it look &#8220;pretty&#8221; later.</p>
+<p>Let&#8217;s start with a few oldies but goodies. <code>reload!</code> will reload your Rails environment in the console enabling any changes to your app&#8217;s models to be reflected. Much less annoying than exiting and then restarting the console every time you make a change. If what your seeing in the console output just doesn&#8217;t make any sense, it may not be a bad idea to execute <code>reload!</code> just in case your console environment needs updating. No guarantees but every so often it does the trick.</p>
 
-<p>On a totally unrelated topic, I saw the documentary <a href="http://revolutionaryoptimists.org/">The Revolutionary Optimists</a> in the city tonight at <a href="http://www.cinemavillage.com/chc/cv/">Cinema Village</a>. Great documentary, great story. I highly recommend it. Two thumbs it. Go see it.</p>
+<p>When you have a need to experiment but are worried about placing your database in great peril, have no fear, <code>rails c --sandbox</code> is there to alleviate your fears. Starting the console with the <code>--sandbox</code> option places your console environment in &#8220;sandbox&#8221; mode. Any database changes which occur while you&#8217;re in this mode will be rolled back when you exit. You can be as reckless as you want. Rails console has you covered.</p>
 
-<p>Gonna take a break tomorrow. Have a great weekend.</p>
+<p>In Rails console, the underscore, <code>_</code>, has never been more useful. In console, <code>_</code> represents the output of the last command run. How often do you run a command with the intent of assigning the output to a variable but forget the variable assignment. That is situation where <code>_</code> shines. You can assign the aforementioned variable with the command output by entering <code>foo = _</code>.</p>
 
-<p>&#8220;<em>I firmly believe that any man&#8217;s finest hour, the greatest fulfillment of all that he holds dear, is that moment when he has worked his heart out in a good cause and lies exhausted on the field of battle - victorious.</em>&#8221; - Vincent Lombardi</p>
+<p>Now for one of my favorites. It&#8217;s very easy to remember, the letter <code>y</code>. If you place a <code>y</code> ahead of your command (<code>y User.first</code>), the output will load to YAML. The resulting formatting makes the output immensely easier to read. This works with most model objects and data structures. <code>y</code> is worth it&#8217;s virtual weight in gold when dealing with nested hashes.</p>
+
+<p><code>helper</code> can be used to access Rails helper methods in the console. For example, <code>helper.pluralize(3, 'dog')</code> results in <code>"3 dogs"</code>. <code>helper.number_to_currency(25.32)</code> results in <code>"$25.32"</code>. <code>helper.link_to 'Sign out', '/sign_out'</code> results in <code>"&lt;a href=\"/sign_out\"&gt;Sign out&lt;/a&gt;"</code>.</p>
+
+<p>The <code>app</code> object can be used to access your controllers through the console. For example, <code>app.new_user_path</code> returns <code>"/users/new"</code>. <code>app.cookies</code> returns a Rails CookieJar object with which you can access session cookie data.</p>
+
+<p>And last but not least, I can highly recommend Ryan Bates&#8217; Railscast <a href="http://railscasts.com/episodes/48-console-tricks-revised">&#8220;Console Tricks&#8221;</a>.</p>
 </div>
 
 
@@ -123,7 +129,7 @@
   
 
 
-<time datetime="2013-03-29T22:28:00-04:00" pubdate data-updated="true">Mar 29<span>th</span>, 2013</time>
+<time datetime="2013-07-24T22:22:00-04:00" pubdate data-updated="true">Jul 24<span>th</span>, 2013</time>
       
 
 
@@ -131,7 +137,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rodriguezd.github.com/blog/2013/03/29/day-2-thank-god-its-friday/" data-via="DRodNYC" data-counturl="http://rodriguezd.github.com/blog/2013/03/29/day-2-thank-god-its-friday/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rodriguezd.github.com/blog/2013/07/24/rails-console-some-tricks/" data-via="DRodNYC" data-counturl="http://rodriguezd.github.com/blog/2013/07/24/rails-console-some-tricks/" >Tweet</a>
   
   
   
@@ -140,10 +146,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/03/28/so-at-the-end-of-day-1-dot-dot-dot/" title="Previous Post: So at the end of Day 1 ...">&laquo; So at the end of Day 1 ...</a>
+        <a class="basic-alignment left" href="/blog/2013/07/10/when-application-dot-html-dot-erb-doesnt-cut-it-dot/" title="Previous Post: When application.html.erb just doesn't cut it">&laquo; When application.html.erb just doesn't cut it</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/04/01/day-5/" title="Next Post: Day 5?">Day 5? &raquo;</a>
       
     </p>
   </footer>

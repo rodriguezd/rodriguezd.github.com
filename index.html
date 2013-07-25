@@ -9,7 +9,7 @@
   <meta name="author" content="David Rodriguez">
 
   
-  <meta name="description" content="Recently I was working on a Rails application on which I had a need to apply layouts to views other than the default application.html.erb alyout. The &hellip;">
+  <meta name="description" content="The past couple of weeks I&#8217;ve been engaged in what could be best described as a love/hate relationship with the Rails console. I&#8217;m not &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +66,56 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/07/24/rails-console-some-tricks/">Rails Console: Useful Tricks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-24T22:22:00-04:00" pubdate data-updated="true">Jul 24<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The past couple of weeks I&#8217;ve been engaged in what could be best described as a love/hate relationship with the Rails console. I&#8217;m not alone. At times, it can be your best friend, other times it can leave you bewildered, frustrated, and wishing you had a bat. But it&#8217;s not always console&#8217;s fault, you have to know how to help console help you. There are a few tricks which can go a long way to helping you do that. Following are a few of the more useful and interesting ones.</p>
+
+<p>Let&#8217;s start with a few oldies but goodies. <code>reload!</code> will reload your Rails environment in the console enabling any changes to your app&#8217;s models to be reflected. Much less annoying than exiting and then restarting the console every time you make a change. If what your seeing in the console output just doesn&#8217;t make any sense, it may not be a bad idea to execute <code>reload!</code> just in case your console environment needs updating. No guarantees but every so often it does the trick.</p>
+
+<p>When you have a need to experiment but are worried about placing your database in great peril, have no fear, <code>rails c --sandbox</code> is there to alleviate your fears. Starting the console with the <code>--sandbox</code> option places your console environment in &#8220;sandbox&#8221; mode. Any database changes which occur while you&#8217;re in this mode will be rolled back when you exit. You can be as reckless as you want. Rails console has you covered.</p>
+
+<p>In Rails console, the underscore, <code>_</code>, has never been more useful. In console, <code>_</code> represents the output of the last command run. How often do you run a command with the intent of assigning the output to a variable but forget the variable assignment. That is situation where <code>_</code> shines. You can assign the aforementioned variable with the command output by entering <code>foo = _</code>.</p>
+
+<p>Now for one of my favorites. It&#8217;s very easy to remember, the letter <code>y</code>. If you place a <code>y</code> ahead of your command (<code>y User.first</code>), the output will load to YAML. The resulting formatting makes the output immensely easier to read. This works with most model objects and data structures. <code>y</code> is worth it&#8217;s virtual weight in gold when dealing with nested hashes.</p>
+
+<p><code>helper</code> can be used to access Rails helper methods in the console. For example, <code>helper.pluralize(3, 'dog')</code> results in <code>"3 dogs"</code>. <code>helper.number_to_currency(25.32)</code> results in <code>"$25.32"</code>. <code>helper.link_to 'Sign out', '/sign_out'</code> results in <code>"&lt;a href=\"/sign_out\"&gt;Sign out&lt;/a&gt;"</code>.</p>
+
+<p>The <code>app</code> object can be used to access your controllers through the console. For example, <code>app.new_user_path</code> returns <code>"/users/new"</code>. <code>app.cookies</code> returns a Rails CookieJar object with which you can access session cookie data.</p>
+
+<p>And last but not least, I can highly recommend Ryan Bates&#8217; Railscast <a href="http://railscasts.com/episodes/48-console-tricks-revised">&#8220;Console Tricks&#8221;</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -610,52 +660,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/03/day-7-cant-pln-for-the-unexpected/">Day 7: Can&#8217;t Plan for the Unexpected</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-03T09:16:00-04:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>So it turns out that yesterday I was able to reserve two tickets to the <em>Daily Show with Jon Stewart</em> taping today. Completely unexpected. I checked online and lo and behold there were tickets available. I&#8217;ve never seen that before. My girlfriend and I are big fans so I jumped on it. Very exciting. Kind of an early birthday surprise for the girlfriend since I was hoping to do this very thing around her birthday in May.</p>
-
-<p>Problem with all this is that to pick up the tickets you have to go to the studio, stand outside in line for a couple hours (in the cold and wind mind you), get the tickets, then come back a couple hours later for the taping. That represents a very good chunk of the day. To make matters worse, today was also laundry day. I hate doing the laundry. I don&#8217;t have a washing machine/dryer in my apartment nor is there a laundry room in my building. I have to pack everything up and lug it and myself a couple blocks to the laundromat. It&#8217;s like a two and a half hour process. And I hate every second of it.</p>
-
-<p>Needless to say, between laundry first thing in the morning, trekking up to Hell&#8217;s Kitchen to stand in line for two and a half hours to pick up my ticket, lunch, returning to the studio early so that my girlfriend could pick up her ticket, the show taping (a lot of fun), and then dinner afterwards at a delicious hummus place, I didn&#8217;t get much done today. Only exception was bit of <em>Learning Rails 3</em> reading on the subway and while standing/freezing in line.</p>
-
-<p>C&#8217;est la vie!</p>
-
-<p>And on a big, exciting, positive note, I received an email inviting me to interview for the <a href="http://flatironschool.com/">Flatiron School</a>&#8217;s&#8217; summer session. Skype interview on Sunday. Looking forward to it. Keeping fingers crossed. If you don&#8217;t know about the school, check it out.</p>
-
-<p>&#8220;<em>To accomplish great things, we must not only act, but also dream; not only plan, but also believe.</em>&#8221; - Antoie France</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -671,6 +675,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/07/24/rails-console-some-tricks/">Rails Console: Useful tricks</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/07/10/when-application-dot-html-dot-erb-doesnt-cut-it-dot/">When application.html.erb just doesn&#8217;t cut it</a>
       </li>
     
@@ -684,10 +692,6 @@
     
       <li class="post">
         <a href="/blog/2013/04/15/no-turning-back-now/">No Turning Back Now</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/11/moving-along/">Moving Along</a>
       </li>
     
   </ul>

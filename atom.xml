@@ -4,7 +4,7 @@
   <title><![CDATA[What did I get myself into???]]></title>
   <link href="http://rodriguezd.github.com/atom.xml" rel="self"/>
   <link href="http://rodriguezd.github.com/"/>
-  <updated>2013-07-10T03:00:58-04:00</updated>
+  <updated>2013-07-25T00:12:38-04:00</updated>
   <id>http://rodriguezd.github.com/</id>
   <author>
     <name><![CDATA[David Rodriguez]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Console: Useful tricks]]></title>
+    <link href="http://rodriguezd.github.com/blog/2013/07/24/rails-console-some-tricks/"/>
+    <updated>2013-07-24T22:22:00-04:00</updated>
+    <id>http://rodriguezd.github.com/blog/2013/07/24/rails-console-some-tricks</id>
+    <content type="html"><![CDATA[<p>The past couple of weeks I&#8217;ve been engaged in what could be best described as a love/hate relationship with the Rails console. I&#8217;m not alone. At times, it can be your best friend, other times it can leave you bewildered, frustrated, and wishing you had a bat. But it&#8217;s not always console&#8217;s fault, you have to know how to help console help you. There are a few tricks which can go a long way to helping you do that. Following are a few of the more useful and interesting ones.</p>
+
+<p>Let&#8217;s start with a few oldies but goodies. <code>reload!</code> will reload your Rails environment in the console enabling any changes to your app&#8217;s models to be reflected. Much less annoying than exiting and then restarting the console every time you make a change. If what your seeing in the console output just doesn&#8217;t make any sense, it may not be a bad idea to execute <code>reload!</code> just in case your console environment needs updating. No guarantees but every so often it does the trick.</p>
+
+<p>When you have a need to experiment but are worried about placing your database in great peril, have no fear, <code>rails c --sandbox</code> is there to alleviate your fears. Starting the console with the <code>--sandbox</code> option places your console environment in &#8220;sandbox&#8221; mode. Any database changes which occur while you&#8217;re in this mode will be rolled back when you exit. You can be as reckless as you want. Rails console has you covered.</p>
+
+<p>In Rails console, the underscore, <code>_</code>, has never been more useful. In console, <code>_</code> represents the output of the last command run. How often do you run a command with the intent of assigning the output to a variable but forget the variable assignment. That is situation where <code>_</code> shines. You can assign the aforementioned variable with the command output by entering <code>foo = _</code>.</p>
+
+<p>Now for one of my favorites. It&#8217;s very easy to remember, the letter <code>y</code>. If you place a <code>y</code> ahead of your command (<code>y User.first</code>), the output will load to YAML. The resulting formatting makes the output immensely easier to read. This works with most model objects and data structures. <code>y</code> is worth it&#8217;s virtual weight in gold when dealing with nested hashes.</p>
+
+<p><code>helper</code> can be used to access Rails helper methods in the console. For example, <code>helper.pluralize(3, 'dog')</code> results in <code>"3 dogs"</code>. <code>helper.number_to_currency(25.32)</code> results in <code>"$25.32"</code>. <code>helper.link_to 'Sign out', '/sign_out'</code> results in <code>"&lt;a href=\"/sign_out\"&gt;Sign out&lt;/a&gt;"</code>.</p>
+
+<p>The <code>app</code> object can be used to access your controllers through the console. For example, <code>app.new_user_path</code> returns <code>"/users/new"</code>. <code>app.cookies</code> returns a Rails CookieJar object with which you can access session cookie data.</p>
+
+<p>And last but not least, I can highly recommend Ryan Bates&#8217; Railscast <a href="http://railscasts.com/episodes/48-console-tricks-revised">&#8220;Console Tricks&#8221;</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[When application.html.erb just doesn't cut it]]></title>
