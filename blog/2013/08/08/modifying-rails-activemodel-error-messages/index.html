@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Modifying Rails ActiveModel Error Messages - What did I get myself into???</title>
+  <meta name="author" content="David Rodriguez">
+
+  
+  <meta name="description" content="Recently I was applying some validations to models on a Rails application I&#8217;m currently working on when I found myself in a bit of a double &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rodriguezd.github.com/blog/2013/08/08/modifying-rails-activemodel-error-messages/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="What did I get myself into???" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">What did I get myself into???</a></h1>
+  
+    <h2>Observations / Musings / Occasional Rants</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+  <li><a href="/cool-stuff">Cool Stuff</a></li>
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:rodriguezd.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Modifying Rails ActiveModel Error Messages</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-08T23:53:00-04:00" pubdate data-updated="true">Aug 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Recently I was applying some validations to models on a Rails application I&#8217;m currently working on when I found myself in a bit of a double pickle. I had a need to get rid of an ActiveModel error message that was being generated and add one that wasn&#8217;t. How do you do either of those? Let me tell you how you can do both.</p>
+
+<p>In Rails, when you try saving an object to a database or execute the <code>.valid?</code> method on it, if any model validations fail, error messages are written to an ActiveModel errors hash. This hash can be accessed by executing <code>.errors.messages</code> on the object. So let&#8217;s say you have a <code>@user</code> object you execute <code>@user.save</code> or <code>@user.valid?</code> on, after doing so, you can execute <code>@user.errors.messages</code> to check for any error messages. The resulting hash will look something like the following:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'><span class="ss">:email</span><span class="o">=&gt;[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'><span class="ss">:email_confirmation</span><span class="o">=&gt;[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'><span class="ss">:password</span><span class="o">=&gt;[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'><span class="ss">:password_confirmation</span><span class="o">=&gt;[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'><span class="ss">:password_digest</span><span class="o">=&gt;[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="o">]</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This hash comes in handy to display the error messages to the user. Rails makes it even easier with the <code>.full_messages</code> method. For the errors hash above, <code>@user.errors.full_messages</code> results in</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="s2">&quot;Name can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Email can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Email confirmation can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password confirmation can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password digest can&#39;t be blank&quot;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Iterating through this array and printing the error messages is a snap. But &#8230;</p>
+
+<p>What if you don&#8217;t want to print one or more of these error messages? For example, &#8220;Password digest can&#8217;t be blank&#8221;. That message will very well leave many a user scratching their head. Let&#8217;s get rid of it from the hash. <code>@user.errors.delete(:password_digest)</code> will do the trick. You can use <code>.errors.delete(:key)</code> to delete any of the messages in the errors hash.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="s2">&quot;Name can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Email can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Email confirmation can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password confirmation can&#39;t be blank&quot;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The error messages that are automatically generated result from failed validations on model attributes of the object in question. But what about validations you perform on any associations or any non-standard validations? If any of those validations fail and you want a message included in the ActiveModel errors hash, you have to add it in yourself.</p>
+
+<p>In my situation, I performed a validation on a &#8216;roles&#8217; association with my User model. Since the validation was not on an attribute of my <code>User</code> model, if the validation failed an error message would not be automatically generated and added to the errors hash. So after a little research I wound up using <code>@user.errors[:base] &lt;&lt; "error message"</code>. This added my message to the hash and made it available in the <code>@user.errors.full_messages</code> array. That easy.</p>
+
+<p>And, should you want to, you can also add additional messages associated with specific model attributes in the same way. For example, if I performed some validation checking that the name entered is all lower-case, on failure I could execute <code>@user.errors[:name] &lt;&lt; "must be all lower-case"</code>. The resulting messages array winds up looking as follows:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="s2">&quot;Name can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Name must be all lower case&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Email can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Email confirmation can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password confirmation can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password digest can&#39;t be blank&quot;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">David Rodriguez</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-08T23:53:00-04:00" pubdate data-updated="true">Aug 8<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rodriguezd.github.com/blog/2013/08/08/modifying-rails-activemodel-error-messages/" data-via="DRodNYC" data-counturl="http://rodriguezd.github.com/blog/2013/08/08/modifying-rails-activemodel-error-messages/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/07/24/rails-console-some-tricks/" title="Previous Post: Rails Console: Useful tricks">&laquo; Rails Console: Useful tricks</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/08/modifying-rails-activemodel-error-messages/">Modifying Rails ActiveModel Error Messages</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/24/rails-console-some-tricks/">Rails Console: Useful tricks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/10/when-application-dot-html-dot-erb-doesnt-cut-it-dot/">When application.html.erb just doesn't cut it</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/21/six-degrees-of-separation-from-everyone-nyc-ruby-slash-rails-meetups/">Don't miss out: NYC Ruby/Rails Community</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/16/one-can-never-know-too-many-command-line-tricks/">Can one ever know too many command line tricks?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/rodriguezd">@rodriguezd</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'rodriguezd',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("DRodNYC", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/DRodNYC" class="twitter-follow-button" data-show-count="false">Follow @DRodNYC</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - David Rodriguez -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

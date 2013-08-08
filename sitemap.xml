@@ -79,12 +79,18 @@
         <lastmod>2013-07-25T00:12:07-04:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://rodriguezd.github.com/blog/2013/08/08/modifying-rails-activemodel-error-messages/
+        </loc>
+        <lastmod>2013-08-08T09:46:59-04:00</lastmod>
+    </url>
+    <url>
         <loc>http://rodriguezd.github.com/blog/archives/</loc>
-        <lastmod>2013-07-25T00:12:07-04:00</lastmod>
+        <lastmod>2013-08-08T09:46:59-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/</loc>
-        <lastmod>2013-07-25T00:12:07-04:00</lastmod>
+        <lastmod>2013-08-08T09:46:59-04:00</lastmod>
     </url>
     <url>
         <loc>http://rodriguezd.github.com/robots.txt</loc>

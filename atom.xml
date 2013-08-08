@@ -4,7 +4,7 @@
   <title><![CDATA[What did I get myself into???]]></title>
   <link href="http://rodriguezd.github.com/atom.xml" rel="self"/>
   <link href="http://rodriguezd.github.com/"/>
-  <updated>2013-07-25T00:12:38-04:00</updated>
+  <updated>2013-08-08T09:47:53-04:00</updated>
   <id>http://rodriguezd.github.com/</id>
   <author>
     <name><![CDATA[David Rodriguez]]></name>
@@ -12,6 +12,91 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Modifying Rails ActiveModel Error Messages]]></title>
+    <link href="http://rodriguezd.github.com/blog/2013/08/08/modifying-rails-activemodel-error-messages/"/>
+    <updated>2013-08-08T23:53:00-04:00</updated>
+    <id>http://rodriguezd.github.com/blog/2013/08/08/modifying-rails-activemodel-error-messages</id>
+    <content type="html"><![CDATA[<p>Recently I was applying some validations to models on a Rails application I&#8217;m currently working on when I found myself in a bit of a double pickle. I had a need to get rid of an ActiveModel error message that was being generated and add one that wasn&#8217;t. How do you do either of those? Let me tell you how you can do both.</p>
+
+<p>In Rails, when you try saving an object to a database or execute the <code>.valid?</code> method on it, if any model validations fail, error messages are written to an ActiveModel errors hash. This hash can be accessed by executing <code>.errors.messages</code> on the object. So let&#8217;s say you have a <code>@user</code> object you execute <code>@user.save</code> or <code>@user.valid?</code> on, after doing so, you can execute <code>@user.errors.messages</code> to check for any error messages. The resulting hash will look something like the following:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'><span class="ss">:email</span><span class="o">=&gt;[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'><span class="ss">:email_confirmation</span><span class="o">=&gt;[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'><span class="ss">:password</span><span class="o">=&gt;[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'><span class="ss">:password_confirmation</span><span class="o">=&gt;[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'><span class="ss">:password_digest</span><span class="o">=&gt;[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="o">]</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This hash comes in handy to display the error messages to the user. Rails makes it even easier with the <code>.full_messages</code> method. For the errors hash above, <code>@user.errors.full_messages</code> results in</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="s2">&quot;Name can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Email can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Email confirmation can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password confirmation can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password digest can&#39;t be blank&quot;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Iterating through this array and printing the error messages is a snap. But &#8230;</p>
+
+<p>What if you don&#8217;t want to print one or more of these error messages? For example, &#8220;Password digest can&#8217;t be blank&#8221;. That message will very well leave many a user scratching their head. Let&#8217;s get rid of it from the hash. <code>@user.errors.delete(:password_digest)</code> will do the trick. You can use <code>.errors.delete(:key)</code> to delete any of the messages in the errors hash.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="s2">&quot;Name can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Email can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Email confirmation can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password confirmation can&#39;t be blank&quot;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The error messages that are automatically generated result from failed validations on model attributes of the object in question. But what about validations you perform on any associations or any non-standard validations? If any of those validations fail and you want a message included in the ActiveModel errors hash, you have to add it in yourself.</p>
+
+<p>In my situation, I performed a validation on a &#8216;roles&#8217; association with my User model. Since the validation was not on an attribute of my <code>User</code> model, if the validation failed an error message would not be automatically generated and added to the errors hash. So after a little research I wound up using <code>@user.errors[:base] &lt;&lt; "error message"</code>. This added my message to the hash and made it available in the <code>@user.errors.full_messages</code> array. That easy.</p>
+
+<p>And, should you want to, you can also add additional messages associated with specific model attributes in the same way. For example, if I performed some validation checking that the name entered is all lower-case, on failure I could execute <code>@user.errors[:name] &lt;&lt; "must be all lower-case"</code>. The resulting messages array winds up looking as follows:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="s2">&quot;Name can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Name must be all lower case&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Email can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Email confirmation can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password confirmation can&#39;t be blank&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;Password digest can&#39;t be blank&quot;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rails Console: Useful tricks]]></title>
