@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Can one ever know too many command line tricks? - What did I get myself into???</title>
+  <title>Sharing Partials Across Models In Rails - What did I get myself into???</title>
   <meta name="author" content="David Rodriguez">
 
   
-  <meta name="description" content="I don&#8217;t think so either. Looking through some presentation decks on speakerdeck.com, I came across two presentations addressing this which I &hellip;">
+  <meta name="description" content="So yesterday I was working on a Rails side project and I found myself in a situation where I had a partial that I wanted to use in several different &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rodriguezd.github.com/blog/2013/06/16/one-can-never-know-too-many-command-line-tricks/">
+  <link rel="canonical" href="http://rodriguezd.github.com/blog/2013/08/21/sharing-partials-in-rails/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -69,7 +69,7 @@
   
   <header>
     
-      <h1 class="entry-title">Can One Ever Know Too Many Command Line Tricks?</h1>
+      <h1 class="entry-title">Sharing Partials Across Models in Rails</h1>
     
     
       <p class="meta">
@@ -85,85 +85,16 @@
   
 
 
-<time datetime="2013-06-16T18:37:00-04:00" pubdate data-updated="true">Jun 16<span>th</span>, 2013</time>
+<time datetime="2013-08-21T08:56:00-04:00" pubdate data-updated="true">Aug 21<span>st</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I don&#8217;t think so either.</p>
+<div class="entry-content"><p>So yesterday I was working on a Rails side project and I found myself in a situation where I had a partial that I wanted to use in several different views spanning several different models. My first impulse was just to place a copy of the partial in each of the models&#8217; views folders but that felt very wrong. Not very &#8220;dry&#8221; at all. There had to be a better way. It took me about ten seconds of research to come upon a perfect solution. The kind of solution that as soon as you read about it you knock yourself on the forehead and go &#8220;Duuuuuuuuhhh!&#8221;.</p>
 
-<p>Looking through some presentation decks on <a href="https://speakerdeck.com/">speakerdeck.com</a>, I came across two presentations addressing this which I can never can get enough of. The two decks are &#8221;<a href="https://speakerdeck.com/keithrbennett/unix-command-line-productivity-tips">Unix Command Line Productivity Tips</a>&#8221; by Keith Bennet and &#8221;<a href="https://speakerdeck.com/janosgyerik/time-saving-tricks-on-the-command-line">Time-saving tricks on the command line</a>&#8221; by Janos Gyerik.</p>
-
-<p>Following are some of the command line gems I gathered from their presentations. If you are unfamiliar with any of them, I strongly encourage you to try them out. I suspect you will like what you find.</p>
-
-<ul>
-<li><strong>cd -</strong></li>
-</ul>
-
-
-<p>(The dash is part of the command) Ever find yourself jumping back and forth between two directories? This puppy toggles the current and previous directory.</p>
-
-<ul>
-<li><strong>pushd</strong> and <strong>popd</strong></li>
-</ul>
-
-
-<p>Pushd is short for &#8216;push directory&#8217; and popd for &#8216;pop directory&#8217;. If you execute <strong>&#8216;pushd .&#8217;</strong> and then move to a different directory, you can then execute <strong>&#8216;popd&#8217;</strong> and it will take you back to the directory you pushed previously. How cool is that?!?</p>
-
-<ul>
-<li><strong>!$</strong></li>
-</ul>
-
-
-<p>Not pretty but this captures the last parameter in the previously executed commad. For example, if you <strong>&#8216;touch file.txt&#8217;</strong> and then <strong>&#8216;subl !$&#8217;</strong>, Sublime Text opens <strong>file.txt</strong>.</p>
-
-<h3>For your editing on the commad line pleasure:</h3>
-
-<ul>
-<li><strong>ctrl - w</strong></li>
-</ul>
-
-
-<p>Deletes the last word you have entered on the commad line</p>
-
-<ul>
-<li><strong>ctrl - k</strong></li>
-</ul>
-
-
-<p>Deletes from the cursor position to the end of the line</p>
-
-<ul>
-<li><strong>ctrl - y</strong></li>
-</ul>
-
-
-<p>Pastes whatever you deleted in the previous commad</p>
-
-<ul>
-<li><strong>cntrl-a</strong></li>
-</ul>
-
-
-<p>Jump to the start of the line</p>
-
-<ul>
-<li><strong>cntrl - e</strong></li>
-</ul>
-
-
-<p>Jump to the end of the line.</p>
-
-<ul>
-<li><strong>option - left/right</strong></li>
-</ul>
-
-
-<p>Skip left/right one word at a time</p>
-
-<p>Enjoy.</p>
+<p>The best thing to do is to create a &#8220;shared&#8221; subdirectory under <code>app/views</code>. Technically you can name the subdirectory whatever you want but &#8220;shared&#8221; seems so right. (DHH himself has also endorsed this approach.) And then you place all your shared partials in this new directory. Then in your code instead of <code>render 'partial'</code> you just have to <code>render 'shared/partial'</code>. That simple.</p>
 </div>
 
 
@@ -186,7 +117,7 @@
   
 
 
-<time datetime="2013-06-16T18:37:00-04:00" pubdate data-updated="true">Jun 16<span>th</span>, 2013</time>
+<time datetime="2013-08-21T08:56:00-04:00" pubdate data-updated="true">Aug 21<span>st</span>, 2013</time>
       
 
 
@@ -194,7 +125,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rodriguezd.github.com/blog/2013/06/16/one-can-never-know-too-many-command-line-tricks/" data-via="DRodNYC" data-counturl="http://rodriguezd.github.com/blog/2013/06/16/one-can-never-know-too-many-command-line-tricks/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rodriguezd.github.com/blog/2013/08/21/sharing-partials-in-rails/" data-via="DRodNYC" data-counturl="http://rodriguezd.github.com/blog/2013/08/21/sharing-partials-in-rails/" >Tweet</a>
   
   
   
@@ -203,10 +134,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/04/15/no-turning-back-now/" title="Previous Post: No Turning Back Now">&laquo; No Turning Back Now</a>
+        <a class="basic-alignment left" href="/blog/2013/08/08/modifying-rails-activemodel-error-messages/" title="Previous Post: Modifying Rails ActiveModel Error Messages">&laquo; Modifying Rails ActiveModel Error Messages</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/06/21/six-degrees-of-separation-from-everyone-nyc-ruby-slash-rails-meetups/" title="Next Post: Don't miss out: NYC Ruby/Rails Community">Don't miss out: NYC Ruby/Rails Community &raquo;</a>
       
     </p>
   </footer>

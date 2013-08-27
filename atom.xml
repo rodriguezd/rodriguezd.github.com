@@ -4,7 +4,7 @@
   <title><![CDATA[What did I get myself into???]]></title>
   <link href="http://rodriguezd.github.com/atom.xml" rel="self"/>
   <link href="http://rodriguezd.github.com/"/>
-  <updated>2013-08-08T09:47:53-04:00</updated>
+  <updated>2013-08-27T09:18:22-04:00</updated>
   <id>http://rodriguezd.github.com/</id>
   <author>
     <name><![CDATA[David Rodriguez]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sharing Partials Across Models In Rails]]></title>
+    <link href="http://rodriguezd.github.com/blog/2013/08/21/sharing-partials-in-rails/"/>
+    <updated>2013-08-21T08:56:00-04:00</updated>
+    <id>http://rodriguezd.github.com/blog/2013/08/21/sharing-partials-in-rails</id>
+    <content type="html"><![CDATA[<p>So yesterday I was working on a Rails side project and I found myself in a situation where I had a partial that I wanted to use in several different views spanning several different models. My first impulse was just to place a copy of the partial in each of the models&#8217; views folders but that felt very wrong. Not very &#8220;dry&#8221; at all. There had to be a better way. It took me about ten seconds of research to come upon a perfect solution. The kind of solution that as soon as you read about it you knock yourself on the forehead and go &#8220;Duuuuuuuuhhh!&#8221;.</p>
+
+<p>The best thing to do is to create a &#8220;shared&#8221; subdirectory under <code>app/views</code>. Technically you can name the subdirectory whatever you want but &#8220;shared&#8221; seems so right. (DHH himself has also endorsed this approach.) And then you place all your shared partials in this new directory. Then in your code instead of <code>render 'partial'</code> you just have to <code>render 'shared/partial'</code>. That simple.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Modifying Rails ActiveModel Error Messages]]></title>
